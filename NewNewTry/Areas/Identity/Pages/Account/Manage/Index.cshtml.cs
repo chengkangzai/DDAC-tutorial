@@ -36,6 +36,24 @@ namespace NewNewTry.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+
+            [Required(ErrorMessage = "Please add the full name first before proceed with registration")]
+            [Display(Name = "Full Name")]
+            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} Characters long.")]
+            public string CustomerName { get; set; }
+
+            [Required]
+            [Display(Name = "Age")]
+            public int CustomerAge { get; set; }
+
+            [Required]
+            [Display(Name = "DOB")]
+            [DataType(DataType.Date)]
+            public DateTime CustomerDOB { get; set; }
+
+            [Display(Name = "Address")]
+            [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$", ErrorMessage = "The address should start with capital letter")]
+            public string CustomerLivingState { get; set; }
         }
 
         private async Task LoadAsync(User user)
@@ -47,7 +65,11 @@ namespace NewNewTry.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                CustomerName = user.CustomerName,
+                CustomerAge = user.CustomerAge,
+                CustomerDOB = user.CustomerDOB,
+                CustomerLivingState = user.CustomerLivingState
             };
         }
 
@@ -73,8 +95,9 @@ namespace NewNewTry.Areas.Identity.Pages.Account.Manage
 
             if (!ModelState.IsValid)
             {
-                await LoadAsync(user);
-                return Page();
+                // await LoadAsync(user);
+                // return Page();
+                return BadRequest("The form is not valid! Please check the fields and try again.");
             }
 
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
@@ -88,6 +111,31 @@ namespace NewNewTry.Areas.Identity.Pages.Account.Manage
                 }
             }
 
+            if (Input.CustomerName != user.CustomerName)
+            {
+                user.CustomerName = Input.CustomerName;
+            }
+            if (Input.CustomerAge != user.CustomerAge)
+            {
+                user.CustomerAge = Input.CustomerAge;
+            }
+
+            if (Input.CustomerDOB != user.CustomerDOB)
+            {
+                user.CustomerDOB = Input.CustomerDOB;
+            }
+
+            if (Input.CustomerLivingState != user.CustomerLivingState)
+            {
+                user.CustomerLivingState = Input.CustomerLivingState;
+            }
+
+            var result = await _userManager.UpdateAsync(user);
+            if (!result.Succeeded)
+            {
+                StatusMessage = "Unexpected error when trying to update your profile.";
+                return RedirectToPage();
+            }
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";
             return RedirectToPage();
