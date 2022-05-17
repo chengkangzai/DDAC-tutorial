@@ -16,6 +16,8 @@ namespace NewNewTry.Data
         {
         }
 
+        public DbSet<Models.Order> Orders { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

@@ -17,5 +17,7 @@ namespace NewNewTry.Data
         public DbSet<NewNewTry.Models.Flower> Flower { get; set; }
 
         public DbSet<NewNewTry.Models.Payment> Payment { get; set; }
+
+        public DbSet<NewNewTry.Models.Order> Order { get; set; }
     }
 }
