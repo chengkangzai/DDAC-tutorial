@@ -437,3 +437,8 @@ C:\Users\CCK\source\repos\NewNewTry\NewNewTry\obj\Debug\netcoreapp3.1\Razor\Area
 C:\Users\CCK\source\repos\NewNewTry\NewNewTry\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 C:\Users\CCK\source\repos\NewNewTry\NewNewTry\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\CCK\source\repos\NewNewTry\NewNewTry\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+C:\Users\CCK\source\repos\NewNewTry\NewNewTry\obj\Debug\netcoreapp3.1\Razor\Views\Flowers\Create.cshtml.g.cs
+C:\Users\CCK\source\repos\NewNewTry\NewNewTry\obj\Debug\netcoreapp3.1\Razor\Views\Flowers\Delete.cshtml.g.cs
+C:\Users\CCK\source\repos\NewNewTry\NewNewTry\obj\Debug\netcoreapp3.1\Razor\Views\Flowers\Details.cshtml.g.cs
+C:\Users\CCK\source\repos\NewNewTry\NewNewTry\obj\Debug\netcoreapp3.1\Razor\Views\Flowers\Edit.cshtml.g.cs
+C:\Users\CCK\source\repos\NewNewTry\NewNewTry\obj\Debug\netcoreapp3.1\Razor\Views\Flowers\Index.cshtml.g.cs
