@@ -6,19 +6,39 @@
 }
 
 <h4>@ViewData["Title"]</h4>
-<partial name="_StatusMessage" model="Model.StatusMessage" />
+<partial name="_StatusMessage" model="Model.StatusMessage"/>
 <div class="row">
     <div class="col-md-6">
         <form id="profile-form" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Username"></label>
-                <input asp-for="Username" class="form-control" disabled />
+                <input asp-for="Username" class="form-control" disabled/>
             </div>
             <div class="form-group">
                 <label asp-for="Input.PhoneNumber"></label>
-                <input asp-for="Input.PhoneNumber" class="form-control" />
+                <input asp-for="Input.PhoneNumber" class="form-control"/>
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.CustomerName"></label>
+                <input asp-for="Input.CustomerName" class="form-control"/>
+                <span asp-validation-for="Input.CustomerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.CustomerAge"></label>
+                <input asp-for="Input.CustomerAge" class="form-control"/>
+                <span asp-validation-for="Input.CustomerAge" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.CustomerDOB"></label>
+                <input asp-for="Input.CustomerDOB" class="form-control"/>
+                <span asp-validation-for="Input.CustomerDOB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.CustomerLivingState"></label>
+                <input asp-for="Input.CustomerLivingState" class="form-control"/>
+                <span asp-validation-for="Input.CustomerLivingState" class="text-danger"></span>
             </div>
             <button id="update-profile-button" type="submit" class="btn btn-primary">Save</button>
         </form>
@@ -26,5 +46,5 @@
 </div>
 
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+    <partial name="_ValidationScriptsPartial"/>
 }
