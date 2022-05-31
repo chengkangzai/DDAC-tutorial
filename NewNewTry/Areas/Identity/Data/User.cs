@@ -20,5 +20,8 @@ namespace NewNewTry.Areas.Identity.Data
 
         [PersonalData]
         public string CustomerLivingState { get; set; }
+        
+        [PersonalData]
+        public string UserRole { get; set; }
     }
 }

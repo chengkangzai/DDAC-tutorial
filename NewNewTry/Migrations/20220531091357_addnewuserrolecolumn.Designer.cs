@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NewNewTry.Data;
 
 namespace NewNewTry.Migrations
 {
     [DbContext(typeof(NewNewTryContext))]
-    partial class NewNewTryContextModelSnapshot : ModelSnapshot
+    [Migration("20220531091357_addnewuserrolecolumn")]
+    partial class addnewuserrolecolumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
