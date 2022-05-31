@@ -22,7 +22,7 @@ namespace NewNewTry.Areas.Identity.Pages.Account
         private readonly SignInManager<User> _signInManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<User> signInManager, 
+        public LoginModel(SignInManager<User> signInManager,
             ILogger<LoginModel> logger,
             UserManager<User> userManager)
         {
@@ -84,7 +84,21 @@ namespace NewNewTry.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
+                    // return LocalRedirect(returnUrl);
+                    //redirect base on user role 
+                    var userRoles = from m in _userManager.Users
+                        where m.Email == Input.Email
+                        select m.UserRole;
+
+                    foreach (var userRole in userRoles)
+                    {
+                        if (string.IsNullOrEmpty(userRole))
+                            return RedirectToAction("Index", "Home");
+                        if (userRole.Equals("Admin"))
+                            return RedirectToAction("Index", "Flowers");
+                        if (userRole.Equals("Customer"))
+                            return Redirect("~/Identity/Account/Manage/Index");
+                    }
                 }
                 if (result.RequiresTwoFactor)
                 {

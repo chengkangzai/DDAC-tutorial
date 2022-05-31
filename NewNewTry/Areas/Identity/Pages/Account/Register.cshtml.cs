@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using NewNewTry.Areas.Identity.Data;
@@ -25,16 +26,32 @@ namespace NewNewTry.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
+        private readonly RoleManager<IdentityRole> _roleManager;
+
+        public SelectList RoleSelectList = new SelectList(
+            new List<SelectListItem>
+            {
+                new SelectListItem { Selected = true, Text = "Select Role", Value = "" },
+                new SelectListItem { Selected = false, Text = "Admin", Value = "Admin" },
+                new SelectListItem { Selected = false, Text = "Customer", Value = "Customer" },
+            },
+            "Value",
+            "Text",
+            1
+        );
+
         public RegisterModel(
             UserManager<User> userManager,
             SignInManager<User> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _roleManager = roleManager;
         }
 
         [BindProperty]
@@ -62,9 +79,9 @@ namespace NewNewTry.Areas.Identity.Pages.Account
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
 
-            [Required(ErrorMessage ="Please add the full name first before proceed with registration")]
+            [Required(ErrorMessage = "Please add the full name first before proceed with registration")]
             [Display(Name = "Full Name")]
-            [StringLength(100, ErrorMessage ="The {0} must be at least {2} and at max {1} Characters long.")]
+            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} Characters long.")]
             public string CustomerName { get; set; }
 
 
@@ -77,6 +94,9 @@ namespace NewNewTry.Areas.Identity.Pages.Account
             [Display(Name = "DOB")]
             [DataType(DataType.Date)]
             public DateTime CustomerDOB { get; set; }
+
+            [Display(Name = "User Role")]
+            public string UserRole { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -93,6 +113,15 @@ namespace NewNewTry.Areas.Identity.Pages.Account
             {
                 return Page();
             }
+            //make sure admin and customer roles are created in aspnetroles 
+            if (!await _roleManager.RoleExistsAsync("Admin"))
+            {
+                await _roleManager.CreateAsync(new IdentityRole("Admin"));
+            }
+            if (!await _roleManager.RoleExistsAsync("Customer"))
+            {
+                await _roleManager.CreateAsync(new IdentityRole("Customer"));
+            }
             var user = new User
             {
                 UserName = Input.Email,
@@ -100,7 +129,8 @@ namespace NewNewTry.Areas.Identity.Pages.Account
                 CustomerAge = Input.CustomerAge,
                 CustomerName = Input.CustomerName,
                 CustomerDOB = Input.CustomerDOB,
-                EmailConfirmed = true
+                EmailConfirmed = true,
+                UserRole = Input.UserRole,
             };
             var result = await _userManager.CreateAsync(user, Input.Password);
             if (result.Succeeded)
@@ -118,13 +148,15 @@ namespace NewNewTry.Areas.Identity.Pages.Account
                 //
                 // await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                 //     $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                
+                await _userManager.AddToRoleAsync(user, Input.UserRole);
 
                 if (_userManager.Options.SignIn.RequireConfirmedAccount)
                 {
                     // return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
                     return RedirectToPage("Login");
                 }
-                
+
                 await _signInManager.SignInAsync(user, isPersistent: false);
                 return LocalRedirect(returnUrl);
             }

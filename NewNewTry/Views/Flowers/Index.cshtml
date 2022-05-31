@@ -1,0 +1,67 @@
+﻿@model IEnumerable<NewNewTry.Models.Flower>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div>
+    <form>
+        Enter Flower Name that you want to search :
+        <input type="text" name="searchString" placeholder="Egg Sunflower">
+        <br>
+        <br>
+        Flower Type: @Html.DropDownList("FlowerType", "All Flowers")
+        <br>
+        <br>
+        <input type="submit" name="submit" value="Search">
+    </form>
+</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FlowerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FlowerPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FlowerType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FlowerSentToShop)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlowerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlowerPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlowerType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlowerSentToShop)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
