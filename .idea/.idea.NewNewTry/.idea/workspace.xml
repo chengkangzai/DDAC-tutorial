@@ -8,7 +8,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ecd0af7-2065-426b-9ee4-dcb4acd60cac" name="Changes" comment="whatever not follow any more" />
+    <list default="true" id="3ecd0af7-2065-426b-9ee4-dcb4acd60cac" name="Changes" comment="whatever not follow any more">
+      <change afterPath="$PROJECT_DIR$/NewNewTry/obj/Debug/netcoreapp3.1/Razor/Views/Orders/Index.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NewNewTry/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NewNewTry/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/NewNewTry/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/NewNewTry/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/NewNewTry/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/NewNewTry/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewNewTry/Controllers/FlowersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NewNewTry/Controllers/FlowersController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewNewTry/Views/Flowers/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/NewNewTry/Views/Flowers/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewNewTry/bin/Debug/netcoreapp3.1/NewNewTry.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NewNewTry/bin/Debug/netcoreapp3.1/NewNewTry.Views.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewNewTry/bin/Debug/netcoreapp3.1/NewNewTry.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NewNewTry/bin/Debug/netcoreapp3.1/NewNewTry.Views.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewNewTry/bin/Debug/netcoreapp3.1/NewNewTry.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NewNewTry/bin/Debug/netcoreapp3.1/NewNewTry.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewNewTry/bin/Debug/netcoreapp3.1/NewNewTry.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NewNewTry/bin/Debug/netcoreapp3.1/NewNewTry.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewNewTry/obj/Debug/netcoreapp3.1/NewNewTry.RazorCoreGenerate.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NewNewTry/obj/Debug/netcoreapp3.1/NewNewTry.RazorCoreGenerate.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewNewTry/obj/Debug/netcoreapp3.1/NewNewTry.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NewNewTry/obj/Debug/netcoreapp3.1/NewNewTry.Views.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewNewTry/obj/Debug/netcoreapp3.1/NewNewTry.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NewNewTry/obj/Debug/netcoreapp3.1/NewNewTry.Views.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewNewTry/obj/Debug/netcoreapp3.1/NewNewTry.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NewNewTry/obj/Debug/netcoreapp3.1/NewNewTry.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewNewTry/obj/Debug/netcoreapp3.1/NewNewTry.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/NewNewTry/obj/Debug/netcoreapp3.1/NewNewTry.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewNewTry/obj/Debug/netcoreapp3.1/NewNewTry.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NewNewTry/obj/Debug/netcoreapp3.1/NewNewTry.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewNewTry/obj/Debug/netcoreapp3.1/NewNewTry.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NewNewTry/obj/Debug/netcoreapp3.1/NewNewTry.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewNewTry/obj/Debug/netcoreapp3.1/Razor/Views/Flowers/Index.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NewNewTry/obj/Debug/netcoreapp3.1/Razor/Views/Flowers/Index.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewNewTry/obj/Debug/netcoreapp3.1/project.razor.json" beforeDir="false" afterPath="$PROJECT_DIR$/NewNewTry/obj/Debug/netcoreapp3.1/project.razor.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,8 +40,6 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/CCK/source/repos/NewNewTry/NewNewTry/Areas/Identity/Data/NewNewTryContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/CCK/source/repos/NewNewTry/NewNewTry/Startup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/NewNewTry/obj/Debug/netcoreapp3.1/Razor/Views/Flowers/Create.cshtml.g.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -94,6 +112,7 @@
       <workItem from="1652174779861" duration="812000" />
       <workItem from="1652175624870" duration="1434000" />
       <workItem from="1652776366239" duration="4238000" />
+      <workItem from="1653985178636" duration="2736000" />
     </task>
     <task id="LOCAL-00001" summary="done demonstrate different db context and new model">
       <created>1652778673295</created>

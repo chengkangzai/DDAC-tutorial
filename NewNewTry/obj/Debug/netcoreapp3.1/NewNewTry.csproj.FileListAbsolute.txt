@@ -447,3 +447,5 @@ C:\Users\CCK\source\repos\NewNewTry\NewNewTry\obj\Debug\netcoreapp3.1\Razor\View
 C:\Users\CCK\source\repos\NewNewTry\NewNewTry\obj\Debug\netcoreapp3.1\Razor\Views\Payments\Details.cshtml.g.cs
 C:\Users\CCK\source\repos\NewNewTry\NewNewTry\obj\Debug\netcoreapp3.1\Razor\Views\Payments\Edit.cshtml.g.cs
 C:\Users\CCK\source\repos\NewNewTry\NewNewTry\obj\Debug\netcoreapp3.1\Razor\Views\Payments\Index.cshtml.g.cs
+C:\Users\CCK\source\repos\NewNewTry\NewNewTry\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Logout.cshtml.g.cs
+C:\Users\CCK\source\repos\NewNewTry\NewNewTry\obj\Debug\netcoreapp3.1\Razor\Views\Orders\Index.cshtml.g.cs

@@ -20,10 +20,34 @@ namespace NewNewTry.Controllers
         }
 
         // GET: Flowers
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString, string FlowerType)
         {
-            return View(await _context.Flower.ToListAsync());
+            //retrieve distinct flower types and attach to viewbag
+            IQueryable<string> sql = from f in _context.Flower
+                orderby f.FlowerType
+                select f.FlowerType;
+
+            // IEnumerable<SelectListItem> items = sql.Distinct().Select(f => new SelectListItem { Value = f, Text = f });
+            IEnumerable<SelectListItem> items = new SelectList(await sql.Distinct().ToListAsync());
+            ViewBag.FlowerType = items;
+
+            var flowers = from f in _context.Flower
+                select f;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                flowers = flowers.Where(s => s.FlowerName.Contains(searchString));
+            }
+
+            if (!string.IsNullOrEmpty(FlowerType))
+            {
+                flowers = flowers.Where(x => x.FlowerType == FlowerType);
+            }
+
+
+            return View(await flowers.ToListAsync());
         }
+
 
         // GET: Flowers/Details/5
         public async Task<IActionResult> Details(int? id)
