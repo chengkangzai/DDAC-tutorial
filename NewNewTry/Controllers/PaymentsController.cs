@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Authorization;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ using NewNewTry.Models;
 
 namespace NewNewTry.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class PaymentsController : Controller
     {
         private readonly NewNewTryNewContext _context;

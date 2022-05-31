@@ -26,6 +26,8 @@ namespace NewNewTry.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
+        private readonly RoleManager<IdentityRole> _roleManager;
+
         public SelectList RoleSelectList = new SelectList(
             new List<SelectListItem>
             {
@@ -42,12 +44,14 @@ namespace NewNewTry.Areas.Identity.Pages.Account
             UserManager<User> userManager,
             SignInManager<User> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _roleManager = roleManager;
         }
 
         [BindProperty]
@@ -109,6 +113,15 @@ namespace NewNewTry.Areas.Identity.Pages.Account
             {
                 return Page();
             }
+            //make sure admin and customer roles are created in aspnetroles 
+            if (!await _roleManager.RoleExistsAsync("Admin"))
+            {
+                await _roleManager.CreateAsync(new IdentityRole("Admin"));
+            }
+            if (!await _roleManager.RoleExistsAsync("Customer"))
+            {
+                await _roleManager.CreateAsync(new IdentityRole("Customer"));
+            }
             var user = new User
             {
                 UserName = Input.Email,
@@ -135,6 +148,8 @@ namespace NewNewTry.Areas.Identity.Pages.Account
                 //
                 // await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                 //     $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                
+                await _userManager.AddToRoleAsync(user, Input.UserRole);
 
                 if (_userManager.Options.SignIn.RequireConfirmedAccount)
                 {
