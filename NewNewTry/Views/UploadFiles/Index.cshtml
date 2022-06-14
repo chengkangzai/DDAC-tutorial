@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@if (ViewBag.msg != "")
+{
+    <div class="alert alert-danger">@ViewBag.msg</div>
+}
+<a asp-action="displayAsGallery" asp-controller="UploadFiles">Gallary</a>
+<center>
+    <h1>Upload Multiple Images Form to S3 Bucket: Example</h1>
+    <br>
+    <form asp-action="UploadImage" asp-controller="UploadFiles" method="post" enctype="multipart/form-data">
+        <label>Upload multiple Images from here:</label>
+        <br>
+        <input type="file" name="images" accept="image/*" multiple/>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+</center>
