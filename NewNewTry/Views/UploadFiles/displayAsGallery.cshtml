@@ -1,0 +1,35 @@
+﻿@model List<Amazon.S3.Model.S3Object>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+<center>
+    <h1>Gallery</h1>
+    <br>
+    <div>
+        <table border="1">
+            <tr style="background-color: yellow">
+                <th>Image Without Using Pre-Signed URL</th>
+                <th>Image With Using Pre-Signed URL</th>
+                <th>Image Location Path</th>
+                <th>Delete Action</th>
+                <th>Download Action</th>
+            </tr>
+
+            @foreach (var  image in Model)
+            {
+                string imageUrl = "https://" + image.BucketName + ".s3.amazonaws.com/" + image.Key;
+                <tr>
+                    <td>
+                        <img src="@imageUrl" width="200px" height="200" alt="">
+                    </td>
+                    <td></td>
+                    <td>@image.Key</td>
+                    <td><a href=""><button>Delete</button></a></td>
+                    <td><a href=""><button>Download</button></a></td>
+                </tr>
+            }
+        </table>
+    </div>
+</center>
