@@ -2,6 +2,7 @@
 using Amazon.Internal;
 using Amazon.S3;
 using Amazon.S3.Model;
+using Amazon.S3.Transfer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -99,7 +100,7 @@ namespace NewNewTry.Controllers
             return keyList;
         }
 
-        public async Task<IActionResult> displayAsGallery()
+        public async Task<IActionResult> displayAsGallery(string msg = "")
         {
             var keylists = getAWSCredentialInfo();
 
@@ -127,6 +128,8 @@ namespace NewNewTry.Controllers
                     imageList.AddRange(response.S3Objects);
                     token = response.NextMarker;
                 } while (token != null);
+
+                ViewBag.PreSignedURLList = GetPreSignedUrl(imageList, s3Client);
             }
             catch (AmazonS3Exception e)
             {
@@ -137,7 +140,158 @@ namespace NewNewTry.Controllers
                 return BadRequest("Error in displaying the S3 objects" + e.Message);
             }
 
+            ViewBag.msg = msg;
             return View(imageList);
+        }
+
+        public List<string> GetPreSignedUrl(List<S3Object> imageListFromS3, AmazonS3Client amazonS3Client)
+        {
+            var preSignedUrl = new List<string>();
+            foreach (var image in imageListFromS3)
+            {
+                var request = new GetPreSignedUrlRequest()
+                {
+                    BucketName = image.BucketName,
+                    Key = image.Key,
+                    Expires = DateTime.Now.AddMinutes(1)
+                };
+                preSignedUrl.Add(amazonS3Client.GetPreSignedURL(request));
+            }
+            return preSignedUrl;
+        }
+
+        public async Task<IActionResult> DeleteImage(string filename)
+        {
+            List<string> keylists = getAWSCredentialInfo();
+            var s3Client = new AmazonS3Client(keylists[0], keylists[1], keylists[2], RegionEndpoint.USEast1);
+
+            try
+            {
+                if (string.IsNullOrEmpty(filename))
+                {
+                    return RedirectToAction("displayAsGallery", "UploadFiles", new { msg = filename + "is not valid" });
+                }
+
+                var deleteObjectRequest = new DeleteObjectRequest()
+                {
+                    BucketName = bucketName,
+                    Key = filename,
+                };
+                await s3Client.DeleteObjectAsync(deleteObjectRequest);
+            }
+            catch (AmazonS3Exception e)
+            {
+                return BadRequest("Error in deleting the S3 objects" + e.Message);
+            }
+            catch (Exception e)
+            {
+                return BadRequest("Error in deleting the S3 objects" + e.Message);
+            }
+
+            return RedirectToAction("displayAsGallery", "UploadFiles", new { msg = filename + "file deleted" });
+        }
+
+        public async Task<IActionResult> DownloadImage(string filename)
+        {
+            var keylists = getAWSCredentialInfo();
+            var s3Client = new AmazonS3Client(keylists[0], keylists[1], keylists[2], RegionEndpoint.USEast1);
+
+            try
+            {
+                if (string.IsNullOrEmpty(filename))
+                {
+                    return RedirectToAction("displayAsGallery", "UploadFiles", new { msg = filename + "is not valid" });
+                }
+
+                var folderName = Path.GetDirectoryName(filename);
+                filename = Path.GetFileName(filename);
+                folderName = !string.IsNullOrEmpty(filename) ? bucketName + "/" + folderName : bucketName;
+
+                var downloadPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\" + filename;
+
+                var transferUtility = new TransferUtility(s3Client);
+
+                await transferUtility.DownloadAsync(downloadPath, folderName, filename);
+                // var deleteObjectRequest = new GetObjectRequest()
+                // {
+                //     BucketName = bucketName,
+                //     Key = filename,
+                // };
+                // var s3Object = await s3Client.GetObjectAsync(deleteObjectRequest);
+                // //stream the s3 object to the response
+                // return File(s3Object.ResponseStream, s3Object.Headers.ContentType);
+                //stream the s3 object to the response
+
+                // var request = new GetObjectRequest()
+                // {
+                //     BucketName = bucketName,
+                //     Key = filename,
+                // };
+                // using (var response = await s3Client.GetObjectAsync(request))
+                // {
+                //     //stream the s3 object to the response
+                //     using (var responseStream = response.ResponseStream)
+                //     {
+                //         var stream = new MemoryStream();
+                //         await responseStream.CopyToAsync(stream);
+                //         stream.Position = 0;
+                //         return stream;
+                //     }
+                // }
+            }
+            catch (AmazonS3Exception e)
+            {
+                return BadRequest("Error in downloading the S3 objects" + e.Message);
+            }
+            catch (Exception e)
+            {
+                return BadRequest("Error in downloading the S3 objects" + e.Message);
+            }
+
+            return RedirectToAction("displayAsGallery", "UploadFiles", new { msg = filename + "is downloading from the S3" });
+        }
+
+        public async Task<Stream> GetStream(string filename)
+        {
+            var keylists = getAWSCredentialInfo();
+            var s3Client = new AmazonS3Client(keylists[0], keylists[1], keylists[2], RegionEndpoint.USEast1);
+
+            try
+            {
+                var request = new GetObjectRequest()
+                {
+                    BucketName = bucketName,
+                    Key = filename,
+                };
+                using (var response = await s3Client.GetObjectAsync(request))
+                {
+                    //stream the s3 object to the response
+                    using (var responseStream = response.ResponseStream)
+                    {
+                        var stream = new MemoryStream();
+                        await responseStream.CopyToAsync(stream);
+                        stream.Position = 0;
+                        return stream;
+                    }
+                }
+            }
+            catch (AmazonS3Exception e)
+            {
+                throw new Exception("Error in downloading the S3 objects" + e.Message);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error in downloading the S3 objects" + e.Message);
+            }
+        }
+
+        public async Task<IActionResult> SecondDownloadImage(string filename)
+        {
+            var imageStream = await GetStream(filename);
+            var imageName = Path.GetFileName(filename);
+
+            Response.Headers.Add("Content-Disposition", "attachment; filename=" + imageName);
+            return File(imageStream, "image/jpeg");
         }
     }
 }

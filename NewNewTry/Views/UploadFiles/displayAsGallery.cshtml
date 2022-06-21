@@ -4,6 +4,11 @@
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
+
+@if (ViewBag.msg != "")
+{
+    <script>alert("@ViewBag.msg")</script>
+}
 <center>
     <h1>Gallery</h1>
     <br>
@@ -15,19 +20,34 @@
                 <th>Image Location Path</th>
                 <th>Delete Action</th>
                 <th>Download Action</th>
+                <th>Download as Stream Action</th>
             </tr>
 
             @foreach (var  image in Model)
             {
-                string imageUrl = "https://" + image.BucketName + ".s3.amazonaws.com/" + image.Key;
+                var imageUrl = "https://" + image.BucketName + ".s3.amazonaws.com/" + image.Key;
                 <tr>
                     <td>
                         <img src="@imageUrl" width="200px" height="200" alt="">
                     </td>
-                    <td></td>
+                    @* <td><img src="@ViewBag.PreSignedURLList[index]" width="200px" height="200" alt=""></td> *@
+                    <td>
+                        <img src="@ViewBag.PreSignedURLList[Model.IndexOf(image)]" width="200px" height="200" alt="">
+                    </td>
                     <td>@image.Key</td>
-                    <td><a href=""><button>Delete</button></a></td>
-                    <td><a href=""><button>Download</button></a></td>
+                    <td>
+                        <a asp-action="deleteImage" asp-route-filename="@image.Key">
+                            <button>Delete</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-action="downloadImage" asp-route-filename="@image.Key">
+                            <button>Download</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-action="secondDownloadImage" asp-route-filename="@image.Key">Download</a>
+                    </td>
                 </tr>
             }
         </table>
