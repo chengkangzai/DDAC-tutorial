@@ -1,0 +1,16 @@
+﻿@model object
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+@if (ViewBag.msg != "")
+{
+    <div class="alert alert-danger">@ViewBag.msg</div>
+}
+<center>
+    <h1>Dynamo DB Operation examples</h1>
+    <br><br>
+    <a asp-action="createTable" asp-controller="DynamoDB"> Create table in dynamo DB </a>
+</center>
