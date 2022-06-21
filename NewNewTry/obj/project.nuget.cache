@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "ULY1tzD8ATX9bkZZF3QgCqY4FSP/qWj2nlBXhGus05V0yeFhponnGx5tEkX3VpxBkFmh1ZZV05tucIABzfUKuA==",
+  "dgSpecHash": "6vrIiVZHLO8eFUZb+fTZD+UY8ytrZxFnJmu7bPw/A/jJc3q8fRSBYjdnvXtrBN7g1vkgPc2Krd5i8Z3woKrwsw==",
   "success": true,
   "projectFilePath": "C:\\Users\\CCK\\source\\repos\\NewNewTry\\NewNewTry\\NewNewTry.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\CCK\\.nuget\\packages\\awssdk.core\\3.7.11.15\\awssdk.core.3.7.11.15.nupkg.sha512",
+    "C:\\Users\\CCK\\.nuget\\packages\\awssdk.core\\3.7.12.2\\awssdk.core.3.7.12.2.nupkg.sha512",
+    "C:\\Users\\CCK\\.nuget\\packages\\awssdk.dynamodbv2\\3.7.3.50\\awssdk.dynamodbv2.3.7.3.50.nupkg.sha512",
     "C:\\Users\\CCK\\.nuget\\packages\\awssdk.s3\\3.7.9.15\\awssdk.s3.3.7.9.15.nupkg.sha512",
     "C:\\Users\\CCK\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.24\\microsoft.aspnetcore.cryptography.internal.3.1.24.nupkg.sha512",
     "C:\\Users\\CCK\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.24\\microsoft.aspnetcore.cryptography.keyderivation.3.1.24.nupkg.sha512",

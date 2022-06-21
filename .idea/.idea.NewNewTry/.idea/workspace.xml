@@ -8,7 +8,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ecd0af7-2065-426b-9ee4-dcb4acd60cac" name="Changes" comment="S3 part 1" />
+    <list default="true" id="3ecd0af7-2065-426b-9ee4-dcb4acd60cac" name="Changes" comment="finish S3">
+      <change afterPath="$PROJECT_DIR$/NewNewTry/Controllers/DynamoDBController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewNewTry/Views/DynamoDb/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NewNewTry/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NewNewTry/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewNewTry/NewNewTry.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/NewNewTry/NewNewTry.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewNewTry/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/NewNewTry/Views/Shared/_Layout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewNewTry/obj/Debug/netcoreapp3.1/NewNewTry.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NewNewTry/obj/Debug/netcoreapp3.1/NewNewTry.Views.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewNewTry/obj/Debug/netcoreapp3.1/NewNewTry.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NewNewTry/obj/Debug/netcoreapp3.1/NewNewTry.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewNewTry/obj/Debug/netcoreapp3.1/NewNewTry.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/NewNewTry/obj/Debug/netcoreapp3.1/NewNewTry.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewNewTry/obj/NewNewTry.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/NewNewTry/obj/NewNewTry.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewNewTry/obj/NewNewTry.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/NewNewTry/obj/NewNewTry.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewNewTry/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/NewNewTry/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewNewTry/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NewNewTry/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewNewTry/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/NewNewTry/obj/project.packagespec.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,7 +36,6 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cb2478d1f01142f2e0b05b54943f32502f956ad73d26226f74ac95c6e963f98e/AuthorizeAttribute.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d2802968162b7782e8c57264718075ad58271b749fb4701dbf6371d3c2c99/IHostingStartup.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/CCK/source/repos/NewNewTry/NewNewTry/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/NewNewTry/obj/Debug/netcoreapp3.1/linux-x64/Razor/Areas/Identity/Pages/Account/Manage/_Layout.cshtml.g.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -102,7 +115,12 @@
       <workItem from="1652776366239" duration="4238000" />
       <workItem from="1653985178636" duration="4765000" />
       <workItem from="1655195688830" duration="1148000" />
-      <workItem from="1655196867617" duration="4701000" />
+      <workItem from="1655196867617" duration="5417000" />
+      <workItem from="1655799589904" duration="357000" />
+      <workItem from="1655799982313" duration="143000" />
+      <workItem from="1655800170511" duration="3259000" />
+      <workItem from="1655803486817" duration="1276000" />
+      <workItem from="1655804828650" duration="2300000" />
     </task>
     <task id="LOCAL-00001" summary="done demonstrate different db context and new model">
       <created>1652778673295</created>
@@ -139,7 +157,28 @@
       <option name="project" value="LOCAL" />
       <updated>1655206146917</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="S3 part 1">
+      <created>1655206218561</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1655206218561</updated>
+    </task>
+    <task id="LOCAL-00007" summary="S3 part 1">
+      <created>1655206241454</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1655206241454</updated>
+    </task>
+    <task id="LOCAL-00008" summary="finish S3">
+      <created>1655804997326</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1655804997326</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,6 +205,7 @@
     <MESSAGE value="whatever not follow any more" />
     <MESSAGE value="finish filtering" />
     <MESSAGE value="S3 part 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="S3 part 1" />
+    <MESSAGE value="finish S3" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish S3" />
   </component>
 </project>
